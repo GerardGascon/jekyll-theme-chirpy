@@ -50,6 +50,13 @@
 
   {{ seo_tags }}
 
+  {% assign author_id = page.author | default: site.author %}
+  {% assign author = site.data.authors[author_id] %}
+
+  {% if author.fediverse %}
+    <meta name="fediverse:author" content="{{ author.fediverse }}">
+  {% endif %}
+
   <title>
     {%- unless page.layout == 'home' -%}
       {{ page.title | append: ' | ' }}
